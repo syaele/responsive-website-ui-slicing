@@ -1,15 +1,389 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<!doctype html>
+<html lang="id">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>tugas05</title>
-</head>
-<body>
-    <div>
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+        font-family: Arial, Helvetica, sans-serif;
+      }
+
+      /* Navigation */
+      header {
+        background-color: #00183f;
+      }
+
+      .navigasi {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        padding: 0 15px;
+        height: 85px;
+      }
+
+      .logo {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+      }
+
+      .logo img {
+        width: 70px;
+        height: 50px;
+        object-fit: contain;
+      }
+
+      .navigasi h3 {
+        color: white;
+        font-size: 1.1rem;
+        white-space: nowrap;
+      }
+
+      nav {
+        display: flex;
+        align-items: center;
+      }
+
+      nav ul {
+        display: flex;
+        list-style: none;
+        gap: 15px;
+      }
+
+      nav ul li a {
+        color: white;
+        text-decoration: none;
+        font-weight: bold;
+        text-transform: capitalize;
+      }
+
+      header button {
+        padding: 5px 10px;
+        background-color: transparent;
+        cursor: pointer;
+        border: none;
+      }
+
+      button img {
+        width: 30px;
+        height: 30px;
+        filter: invert(1); /* Agar icon terlihat jika berwarna gelap */
+      }
+
+      /* Hero Section */
+      .hero-1 {
+        background-image: url("image_4906b2d7.png");
+        padding: 30px 20px;
+        background-size: cover;
+        background-repeat: no-repeat;
+        background-position: center;
+        width: 100%;
+        min-height: 30vh;
+        display: flex;
+        align-items: center;
+      }
+
+      .hero h2,
+      .hero h1 {
+        color: #00183f;
+      }
+
+      .hero p {
+        color: #333;
+        margin-top: 10px;
+        font-size: 14px;
+        line-height: 1.4;
+      }
+
+      .hero button {
+        background-color: orange;
+        margin-top: 15px;
+        color: white;
+        border-radius: 15px;
+        border: none;
+        font-size: 12px;
+        padding: 8px 15px;
+        cursor: pointer;
+      }
+
+      /* Cards Section */
+      .card {
+        gap: 20px;
+        padding: 20px;
+        align-items: center;
+      }
+
+      .card-1 {
+        background-color: whitesmoke;
+        display: flex;
+        align-items: center;
+        padding: 15px;
+        border-radius: 10px;
+        width: 100%;
+        max-width: 500px;
+        gap: 15px;
+      }
+
+      .card-1 img {
+        object-fit: cover;
+        width: 60px;
+        height: 60px;
+        flex-shrink: 0;
+      }
+
+      .card-1-1 {
+        display: flex;
+        flex-direction: column;
+        gap: 5px;
+      }
+
+      .card-1-1 h2 {
+        color: orange;
+        font-size: 1.2rem;
+      }
+
+      .card-1-1 p {
+        font-size: 0.85rem;
+        color: #555;
+      }
+
+      .card-1-1 button {
+        color: orange;
+        background-color: transparent;
+        text-decoration: none;
+        border: none;
+        text-align: left;
+        cursor: pointer;
+        font-weight: bold;
+        margin-top: 5px;
+      }
+
+      /* Footer */
+      footer {
+        background-color: #00183f;
+        padding: 20px;
+        display: flex;
+        flex-direction: column;
+        gap: 15px;
+      }
+
+      .maps {
+        color: white;
+        font-size: 12px;
+        display: flex;
+        align-items: center;
+        gap: 15px;
+      }
+
+      .maps img {
+        width: 30px;
+        height: 30px;
+        object-fit: contain;
+        flex-shrink: 0;
+      }
+
+      .maps-1 h2 {
+        font-size: 1rem;
+        margin-bottom: 3px;
+      }
+
+      .gambar {
+        display: flex;
+        gap: 10px;
+        margin-top: 5px;
+      }
+
+      .gambar img {
+        width: 25px;
+        height: 25px;
+        object-fit: contain;
+      }
+
+      /* Media Queries */
+      @media screen and (max-width: 600px) {
+        nav ul {
+          display: none; /* Sembunyikan menu pada layar HP */
+        }
+      }
+
+      @media screen and (min-width: 601px) {
+        header button {
+          display: none; /* Sembunyikan tombol hamburger di layar besar */
+        }
+
+        .hero-1 {
+          height: 450px;
+          padding-left: 150px;
+        }
+
+        .hero h2 {
+          font-size: 40px;
+        }
+
+        .hero h1 {
+          font-size: 50px;
+        }
+
+        .hero button {
+          font-size: 15px;
+          padding: 15px 15px;
+        }
+
+        .card {
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          gap: 200px;
+        }
+
+        .card-1 {
+          display: block;
+          text-align: center;
+          width: auto;
+          height: 350px;
+        }
+
+        .card-1-1 button {
+          margin: auto;
+        }
+
+        .card-1 img {
+          width: 150px;
+          height: 150px;
+        }
+
+        .card-1-1 h2 {
+          font-size: 30px;
+        }
+
+        footer {
+          display: flex;
+          flex-direction: row;
+          justify-content: space-around;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <header>
+      <div class="navigasi">
+        <div class="logo">
+          <img
+            src="https://encrypted-tbn1.gstatic.com/images?q=tbn:ANd9GcS0FzpzFzkBu0m29vyJXU5OtqZKBBWJWdg8H6zhNB36LTcJacAi"
+            alt="Logo Sekolah"
+          />
+          <h3>SEKOLAH UNGGUL</h3>
+        </div>
+
         <nav>
-            <a href="#"></a>
+          <ul>
+            <li><a href="#">home</a></li>
+            <li><a href="#">about</a></li>
+            <li><a href="#">portfolio</a></li>
+            <li><a href="#">contact</a></li>
+          </ul>
+          <button>
+            <img src="bars-solid-full.svg" alt="Menu" />
+          </button>
         </nav>
+      </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero-1">
+      <div class="hero">
+        <h2>Selamat Datang di</h2>
+        <h1>Sekolah Unggul</h1>
+
+        <p>
+          Mewujudkan generasi cerdas, berkarakter <br />
+          dan siap menghadapi masa depan
+        </p>
+
+        <button>Daftar Sekarang →</button>
+      </div>
+    </section>
+
+    <!-- Content Cards -->
+    <div class="card">
+      <div class="card-1">
+        <img src="wisuda-removebg-preview.png" alt="wisuda" />
+        <div class="card-1-1">
+          <h2>Akademik</h2>
+          <p>
+            kurikulum berkualitas dengan <br />
+            metode pembelajaran inovatif <br />
+            untuk prestasi terbaik
+          </p>
+          <button>selengkapnya -></button>
+        </div>
+      </div>
+
+      <div class="card-1">
+        <img src="bole.png" alt="bola" />
+        <div class="card-1-1">
+          <h2>Olahraga</h2>
+          <p>
+            mengembangkan potensi siswa <br />
+            melalui berbagai kegiatan <br />
+            olahraga dan kompetensi
+          </p>
+          <button>selengkapnya -></button>
+        </div>
+      </div>
+
+      <div class="card-1">
+        <img src="seno.png" alt="seni" />
+        <div class="card-1-1">
+          <h2>Seni</h2>
+          <p>
+            membangun kreativitas dan bakat <br />
+            siswa di bidang seni dan budaya <br />
+            secara profesional
+          </p>
+          <button>selengkapnya -></button>
+        </div>
+      </div>
     </div>
-</body>
+
+    <!-- Footer -->
+    <footer>
+      <div class="maps">
+        <img src="location-pin-removebg-preview.png" alt="maps" />
+        <div class="maps-1">
+          <h2>Alamat Sekolah</h2>
+          <p>
+            Jl. Pendidikan No. 123, Kota Cerdas,<br />
+            Kec. Maju, Prov. Indonesia 12345
+          </p>
+        </div>
+      </div>
+
+      <div class="maps">
+        <img src="./phone-call-removebg-preview.png" alt="phone" />
+        <div class="maps-1">
+          <h2>Hubungi Kami</h2>
+          <p>021 1234 5678 | info@sekolahunggul.sch.id</p>
+        </div>
+      </div>
+
+      <div class="maps">
+        <img src="./share-removebg-preview.png" alt="share" />
+        <div class="maps-1">
+          <h2>Tautan media sosial</h2>
+
+          <div class="gambar">
+            <img src="facebook.png" alt="facebook" />
+            <img src="instagram (1).png" alt="ig" />
+            <img src="youtube (1).png" alt="youtube" />
+            <img src="tik-tok.png" alt="tiktok" />
+          </div>
+        </div>
+      </div>
+    </footer>
+  </body>
 </html>
